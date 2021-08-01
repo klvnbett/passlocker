@@ -29,6 +29,16 @@ class User:
         this method confirms if succesful in login in
         """
 
+    @classmethod
+    #this is a class decorator to display users
+    def display_users(self):
+        for user in self.users:
+            print(user)
+
+    @classmethod
+    #class decorator to delete users
+    def del_users(self):
+        User.users.remove(self)
 class Credentials:
     '''
     '''
