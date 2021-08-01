@@ -17,6 +17,18 @@ class User:
         newUser =User(email,userName,password,confirmPassword)
         return newUser
 
+    def saveUser(email,userName,password):
+        """
+        this method will save the user details
+        """
+        newUser =[email,userName,password]
+        User.users.append(newUser)
+
+    def loginMessage():
+        """
+        this method confirms if succesful in login in
+        """
+
 class Credentials:
     '''
     '''
