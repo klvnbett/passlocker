@@ -63,4 +63,12 @@ class Credentials:
         return newCredentials
 
     def saveCredentials(self,userName,password):
+        """
+        method to save new credentials
+        """
+        Credentials.credentials.append(self)
+
+    def displayCredentials(self):
+        for credential in Credentials.credentials:
+            print(credential)
 
