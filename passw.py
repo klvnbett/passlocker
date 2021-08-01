@@ -71,4 +71,11 @@ class Credentials:
     def displayCredentials(self):
         for credential in Credentials.credentials:
             print(credential)
-
+    def checkExistance(self,userName):
+        """
+        method that checks the existance of user data
+        """
+        if Credentials.credentials:
+            for credential in Credentials.credentials:
+                if credential.userName==userName:
+                    return True
