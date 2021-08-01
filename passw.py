@@ -79,3 +79,14 @@ class Credentials:
             for credential in Credentials.credentials:
                 if credential.userName==userName:
                     return True
+                print("details provided already exist")
+            else:
+                print("info provided notyet saved")
+
+    def delete_credentials(accountName):
+        """
+        this will delete user credentials
+        """
+        for credential in Credentials.credentials:
+                if credential.userName==accountName:
+                    Credentials.credentials.remove(credential)
