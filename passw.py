@@ -129,9 +129,43 @@ def main():
                     print("\n")
 
                     print("Enter your password: \n")
-                    
+
             login_password = input()
             for credential in User.users:
                 if credential[0] == login_username and credential[1] == int(login_password):
-                    prompt_selection =
+                prompt_selection = input("Kindly select the option you would like to do using number:\n 1. Store already existing account credentials.\n 2. Create new account credentials.\n 3. View account credentials and passwords. \n 4. Delete account details.\n 5. Exit")
+
+                    if prompt_selection == "1":
+                        for user in User.users:
+                            Credentials.save_credentials(userName, password)
+                        print(f"Your credentials {user} have been save successfully.")
+                    
+                    elif prompt_selection == "2":
+                        newAccount = input("Enter your username: \n")
+                        
+                        newPassword = input("Enter your password: \n")
+                        Credentials.createNewCredentials(newAccount, newPassword)
+                        Credentials.save_credentials(newAccount, newPassword)
+                        break
+
+                        elif prompt_selection == "3":
+                        Credentials.display_credentials()
+                    
+                    elif prompt_selection == "4":
+                        accountName = input("Enter username of the credential to delete: \n")
+                        Credentials.deleteCredential(accountName)
+                        print(f"Credential with username {accountName} deleted successfully")
+                        
+                    elif prompt_selection == "5":
+                        print("Exiting application")
+                        break
+                    
+                    else:
+                        print("Invalid selection")
+                else:
+                    print("Incorrect username or password")
+                    break
+        elif login_options == "ex":
+            print("Bye for now. See you again")
+            break
 
