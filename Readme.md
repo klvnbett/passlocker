@@ -8,12 +8,12 @@ This is a python application that allows users to save their account credentials
 3. If you have the pre-requisites you can run the application.
 ## Pre-requisites
 You need to have Python3.6
-To install python3.8 in terminal, run the following commands.
+To install python3.6 in terminal, run the following commands.
 apt-get install python3.6
 apt-get install pip3
 
 ## Running the application
-1. Cd to the project folder using terminal and run ./Main.py to run the app.
+1. Cd to the project folder using terminal and run ./pass.py to run the app.
 
 * Select cc   Provide username, password and confirm password. Choose option 1 enter own password and option 2 for system generated password. If success, login input is displayed, else if passwords does not match, application prints 'Passwords does not match' 
 * Provide login credentials i.e username and password  username and password and if success, application prints  1. Store already existing account credentials. 2. Create new account credentials. 3. View account credentials and passwords.  4. Delete account details. 5. Exit
@@ -21,7 +21,7 @@ apt-get install pip3
 * Select option 2, the application will prompt user for username and password and prints, "Account created successfully with username and password"
 * Select option 3, the application will display the stored credentials.
 * Select option 4, the application will prompt user for username of the application to delete and prints "Credential with username username deleted successfully."
-* Select option 5, exist the application and prints "Bye, see you next time"
+* Select option 5, exits the application and prints "Bye, see you next time"
 
 ## Build with 
 Python3.6
