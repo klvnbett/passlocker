@@ -114,3 +114,24 @@ def main():
                     User.saveUser(userName, password)
                     print(f"Account created successfully with {userName} as username")
 
+                    elif passwordoption == "2":
+                password = random.randint(10000, 90000)
+                User.saveUser(userName, password)
+
+                print(f"Account created successfully with user {userName}.\n")
+                print("Password is: ")
+                print(password)
+
+                elif login_options == 'lg':
+                    print("Welcome to passlocker. Login\n")
+                    print("Enter your username: \n")
+                    login_userName = input()
+                    print("\n")
+
+                    print("Enter your password: \n")
+                    
+            login_password = input()
+            for credential in User.users:
+                if credential[0] == login_username and credential[1] == int(login_password):
+                    prompt_selection =
+
