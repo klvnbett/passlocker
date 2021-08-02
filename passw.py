@@ -90,3 +90,10 @@ class Credentials:
         for credential in Credentials.credentials:
                 if credential.userName==accountName:
                     Credentials.credentials.remove(credential)
+
+def main():
+    print("Hi there and welcome")
+    while True:
+        print("*"*40)
+        options= input("Enter your user name")
+        
