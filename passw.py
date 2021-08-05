@@ -4,140 +4,142 @@ class User:
     '''
     this is a class for adding user 
     '''
+    def __init__(self, username,email, password, confirmPassword):
+        self.username=username
+        self.email = email
+        self.password = password
+        self.confirmPassword = confirmPassword
+        
+    users = [] # empty list of users
 
-    users=[] #empty users
-
-    def __init__(self,userName,email,password,confirmPassword):
-        self.email=email
-        self.password=password
-        self.confirmPassword=confirmPassword
-
-    def createUser(email,password,confirmPassword):
-        '''
-        an instance that will create a new user
-        '''
-        newUser =User(email,userName,password,confirmPassword)
+    def createUser(username,email, password, confirmPassword):
+        """
+        This method creates a new user
+        """
+        newUser = User(username,email, password, confirmPassword)
         return newUser
-
-    def saveUser(email,userName,password):
+        
+    def saveUser(username,email, password):
         """
-        this method will save the user details
+        This method saves user data
         """
-        newUser =[email,userName,password]
+        newUser=[username,email, password]
         User.users.append(newUser)
-
+    
     def loginMessage():
         """
-        this method confirms if succesful in login in
+        This method diplays to user upon successful login
         """
-
+        print("Login successful")
+        
     @classmethod
-    #this is a class decorator to display users
-    def display_users(self):
+        #Decorator for displaying users
+    def displayUsers(self):
         for user in self.users:
             print(user)
-
+        
+    
     @classmethod
-    #class decorator to delete users
-    def del_users(self):
-        User.users.remove(self)
+    #decorator for deleting users
+    def deleteUsers(self):
+        User.users.remove(self) 
+        
+        
+
 class Credentials:
-    '''
-    this is a class fo credentials
-    '''
+    def __init__(self, username, password):
+        """
+        This is a credentials constructor 
+        """
+        self.username = username
+        self.password = password
 
-    def __init__(self,userName,password):
+    credentials = []
+    
+    def createNewCredentials(self, username, password):
         """
-        this is an instance to create credentials
+        This method creates new credentials
         """
-        self.userName= userName
-        self.password=password
-
-    Credentials=[]
-
-    def createNewCredentials(self,userName,password):
-        """
-        method to create new credentials
-        """
-        newCredentials=Credentials(userName,password)
+        newCredentials = Credentials(username, password)
         return newCredentials
-
-    def saveCredentials(self,userName,password):
+    
+    def save_credentials(self, username, password):
         """
-        method to save new credentials
+        This methods saves credentials
         """
         Credentials.credentials.append(self)
-
-    def displayCredentials(self):
+        
+    def display_credentials(self):
         for credential in Credentials.credentials:
-            print(credential)
-    def checkExistance(self,userName):
+            print(credential)   
+    
+    def check_Ifexist(self, email):
         """
-        method that checks the existance of user data
+        This is a method to check if data is already existing
         """
         if Credentials.credentials:
             for credential in Credentials.credentials:
-                if credential.userName==userName:
+                if credential.email == email:
                     return True
-                print("details provided already exist")
-            else:
-                print("info provided notyet saved")
-
-    def delete_credentials(accountName):
+            print("Details provided not available")
+        else:
+            print("kindly subscribe")
+    
+    def deleteCredential(accountName):
         """
-        this will delete user credentials
+        This method will delete user credentials
         """
         for credential in Credentials.credentials:
-                if credential.userName==accountName:
-                    Credentials.credentials.remove(credential)
-
+            if credential.username == accountName:
+                Credentials.credentials.remove(credential)
+            
 def main():
-    print("Hi there and welcome")
-    while True:
-        print("*"*40)
-        usee_name= input("Enter your user name")
-        loginOptions=input(f"hello {usee_name}. kindly use these short codes to select your option:\n cc -create account.\n lg -login\n dc -Display credentials\n ex -exit")
-        print ("*"*40)
-        if loginOptions=='cc':
-            userName= input("enter your username:\n")
-
-            passwordOption= input("choose your option:\n 1. Enter password\n 2. use autogenerated password\n")
-
+   while True:    
+        print("*"*50)
+        login_options = input(f"Goodday. Kindly select option using the following short codes:\n cc - Create account.\n lg -Login\n ex - Exit\n")
+        print("*"*50)
+        if login_options == 'cc':
+            username = input("Enter username / email address: \n")
+            
+            passwordoption = input(
+                "Choose password option: \n 1. Enter password\n2. Use autogenerated password\n")
+            
             if passwordoption == "1":                
                 password = input("Enter password: \n")
                 
                 confirmPassword = input("Confirm password: \n")
-
+                
                 if password == confirmPassword:
-                    print("Welcome to passlocker. Login")
-                    User.createUser(userName,password,confirmPassword)
-                    User.saveUser(userName, password)
-                    print(f"Account created successfully with {userName} as username")
-
-                    elif passwordoption == "2":
+                    print("Welcome to password locker. Login")
+                    User.createUser(username,password,confirmPassword)
+                    User.saveUser(username, password)
+                    print(f"Account created successfully with {username} as username")
+                                                   
+                                    
+            elif passwordoption == "2":
                 password = random.randint(10000, 90000)
-                User.saveUser(userName, password)
-
-                print(f"Account created successfully with user {userName}.\n")
-                print("Password is: ")
-                print(password)
-
-                elif login_options == 'lg':
-                    print("Welcome to passlocker. Login\n")
-                    print("Enter your username: \n")
-                    login_userName = input()
-                    print("\n")
-
-                    print("Enter your password: \n")
-
+                User.saveUser(username, password)
+                
+            print(f"Account created successfully with user {username}.\n")
+            print("Password is ")
+            print(password)
+                
+         
+        elif login_options == 'lg':
+            print("Welcome to password locker. Login\n")
+            print("Enter your username: \n")
+            login_username = input()
+            print("\n")
+            
+            print("Enter your password: \n")
             login_password = input()
             for credential in User.users:
                 if credential[0] == login_username and credential[1] == int(login_password):
-                prompt_selection = input("Kindly select the option you would like to do using number:\n 1. Store already existing account credentials.\n 2. Create new account credentials.\n 3. View account credentials and passwords. \n 4. Delete account details.\n 5. Exit")
-
+                    prompt_selection = input("Kindly select the option you would like to do using number:\n 1. Store already existing account credentials.\n 2. Create new account credentials.\n 3. View account credentials and passwords. \n 4. Delete account details.\n 5. Exit")
+                                
                     if prompt_selection == "1":
                         for user in User.users:
-                            Credentials.save_credentials(userName, password)
+                            Credentials.save_credentials(username, password)
                         print(f"Your credentials {user} have been save successfully.")
                     
                     elif prompt_selection == "2":
@@ -147,8 +149,8 @@ def main():
                         Credentials.createNewCredentials(newAccount, newPassword)
                         Credentials.save_credentials(newAccount, newPassword)
                         break
-
-                        elif prompt_selection == "3":
+                    
+                    elif prompt_selection == "3":
                         Credentials.display_credentials()
                     
                     elif prompt_selection == "4":
@@ -163,9 +165,11 @@ def main():
                     else:
                         print("Invalid selection")
                 else:
-                    print("Incorrect username or password")
+                    print("Invalid username or password")
                     break
         elif login_options == "ex":
-            print("Bye for now. See you again")
+            print("Bye for now. Do have a nice day see you soon")
             break
-
+        
+if __name__ == '__main__':
+    main()
