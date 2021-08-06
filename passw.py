@@ -4,26 +4,26 @@ class User:
     '''
     this is a class for adding user 
     '''
-    def __init__(self, username,email, password, confirmPassword):
-        self.username=username
+    def __init__(self,email, password, confirmPassword):
+        
         self.email = email
         self.password = password
         self.confirmPassword = confirmPassword
         
     users = [] # empty list of users
 
-    def createUser(username,email, password, confirmPassword):
+    def createUser(email, password, confirmPassword):
         """
         This method creates a new user
         """
-        newUser = User(username,email, password, confirmPassword)
+        newUser = User(email, password, confirmPassword)
         return newUser
         
-    def saveUser(username,email, password):
+    def saveUser(email, password):
         """
         This method saves user data
         """
-        newUser=[username,email, password]
+        newUser=[email, password]
         User.users.append(newUser)
     
     def loginMessage():
@@ -110,10 +110,10 @@ def main():
                 confirmPassword = input("Confirm password: \n")
                 
                 if password == confirmPassword:
-                    print("Welcome to password locker. Login")
+                    print("Welcome to password and credentials locker. Login")
                     User.createUser(username,password,confirmPassword)
                     User.saveUser(username, password)
-                    print(f"Account created successfully with {username} as username")
+                    print(f"You have successfully  Subscribed with {username} as username")
                                                    
                                     
             elif passwordoption == "2":
