@@ -59,7 +59,7 @@ def del_credentials(credentials):
 def main():
     print("WELCOME TO PASSLOCKER")
     options = input("Hey there, what's  your name? and welcome to passlocker\n ")
-    account_code = input(f"Use the number codes {options}. to make your choice\n cc. Create a new Account\n lg. Login\n")
+    account_code = input(f"Use the number codes {options}. to make your choice\n cc. Create a new Account\n lg. Login\nk")
 
     if account_code == "cc":
         print('-' * 50)
