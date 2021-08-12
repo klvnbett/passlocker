@@ -59,9 +59,9 @@ def del_credentials(credentials):
 def main():
     print("WELCOME TO PASSLOCKER")
     options = input("Hey there, what's  your name? and welcome to passlocker\n ")
-    account_code = input(f"Use the number codes {options}. to make your choice\n 1. Create a new Account\n2. Login")
+    account_code = input(f"Use the number codes {options}. to make your choice\n cc. Create a new Account\n lg. Login\n")
 
-    if account_code == "1":
+    if account_code == "cc":
         print('-' * 50)
         print("Create your account")
         print("Username : ")    
@@ -77,7 +77,7 @@ def main():
         # login after registration
         login()
 
-    elif account_code == '2':
+    elif account_code == 'lg':
         system('clear')
         login()
 
